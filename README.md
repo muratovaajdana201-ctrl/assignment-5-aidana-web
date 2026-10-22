@@ -17,9 +17,16 @@ GitHub Pages link:
 Create a JavaScript const object named userProfile that stores different data types: string (name), number (birthYear), boolean (isDeveloper) and an array (hobbies).
  
 I made the userProfile object with const. It has name (string), birthYear (number), isDeveloper (boolean) and hobbies (array with three hobbies).
+
+const userProfile = {
+  name: "Your Name",
+  birthYear: 2006,
+  isDeveloper: true,
+  hobbies: ["Reading", "Music", "Football"]
+};
  
 
-![Task 1](screenshots/task1.png)
+![Task 1](screenaido/task1.png)
  
 ### Task 2. Arithmetic Calculations
  
@@ -27,8 +34,24 @@ Write a script that uses arithmetic operators to calculate the user's current ag
  
 I wrote the function showProfile(). It takes the current year with new Date().getFullYear() and subtracts birthYear to get the age. Then I multiplied the age by 12 to get the months, and used hobbies.length to count the hobbies. The results are shown in the console and on the page.
  
+function showProfile() {
+  const currentYear = new Date().getFullYear();
+  const age = currentYear - userProfile.birthYear;
+  const months = age * 12;
+  const hobbiesCount = userProfile.hobbies.length;
 
-![Task 2](screenshots/task2.png)
+  console.log("Name:", userProfile.name);
+  console.log("Age:", age);
+  console.log("Months old:", months);
+  console.log("Hobbies count:", hobbiesCount);
+
+  document.getElementById("profileInfo").textContent =
+    userProfile.name + ", age: " + age + ", months: " + months + ", hobbies: " + hobbiesCount;
+}
+
+showProfile();
+
+![Task 2](screenaido/task2.png)
  
  
 ## Part 2: Form Input & Event Responses
@@ -39,19 +62,32 @@ Create a simple form or input fields: an input for Username, an input for Birth 
  
 I added two inputs (text for username and number for birth year) and the button "Create / Update Profile" in index.html.
  
+<input type="text" id="username" placeholder="Username">
+<input type="number" id="birthYear" placeholder="Birth Year">
+<button id="profileBtn">Create / Update Profile</button>
 
-![Task 3](screenshots/task3.png)
+![Task 3](screenaido/task3.png)
  
 ### Task 4. Event Listener
  
 Add a click or submit event listener to the button. When clicked, capture the user's input values and update the userProfile object.
  
-I added a click event listener to the button. When I click it, the code reads the values from both inputs and saves them into userProfile.name and userProfile.birthYear. The birth year comes from the input as a string, so I used Number() to turn it into a number. After that showProfile() runs again and the text on the page changes (and its color becomes green).
+I added a click event listener to the button. When I click it, the code reads the values from both inputs and saves them into userProfile.name and userProfile.birthYear. The birth year comes from the input as a string, so I used Number() to turn it into a number. After that showProfile() runs again and the text on the page changes (and its color becomes purple).
+ 
+const usernameInput = document.getElementById("username");
+const birthYearInput = document.getElementById("birthYear");
+const profileBtn = document.getElementById("profileBtn");
+
+profileBtn.addEventListener("click", () => {
+  userProfile.name = usernameInput.value;
+  userProfile.birthYear = Number(birthYearInput.value);
+  showProfile();
+  document.getElementById("profileInfo").style.color = "#7c3aed";
+});
+
+![Task 4](screenaido/task4.png)
  
 
-![Task 4](screenshots/task4.png)
- 
----
  
 ## Part 3: DOM List Manipulation
  
@@ -60,16 +96,47 @@ I added a click event listener to the button. When I click it, the code reads th
 Create an unordered list (<ul>) with tasks or hobbies. Create an "Add Item" button that adds a new <li> from user input, and a "Remove Item" button that deletes the last item.
  
 I made a <ul> with three hobbies. For the "Add Item" button I take the text from the input, create a new <li> with document.createElement, put the text inside and add it to the list with appendChild. If the input is empty, nothing is added. For the "Remove Item" button I find the last <li> with lastElementChild and delete it with remove().
+
+
+
+![Task 5 - add](screenaido/task5_add.png)
+
+<ul id="hobbyList">
+  <li>Reading</li>
+  <li>Music</li>
+  <li>Football</li>
+</ul>
+
+<input type="text" id="newItem" placeholder="New item">
+<button id="addBtn">Add Item</button>
+<button id="removeBtn">Remove Item</button>
  
 
-![Task 5 - add](screenshots/task5_add.png)
+![Task 5 - remove](screenaido/task5_remove.png)
+
+const hobbyList = document.getElementById("hobbyList");
+const newItemInput = document.getElementById("newItem");
+
+document.getElementById("addBtn").addEventListener("click", () => {
+  if (newItemInput.value === "") {
+    return;
+  }
+  const li = document.createElement("li");
+  li.textContent = newItemInput.value;
+  hobbyList.appendChild(li);
+  newItemInput.value = "";
+});
+
+document.getElementById("removeBtn").addEventListener("click", () => {
+  const last = hobbyList.lastElementChild;
+  if (last) {
+    last.remove();
+  }
+});
  
 
-![Task 5 - remove](screenshots/task5_remove.png)
  
----
- 
-## Summary of my work
+## Conclusion
  
 First I created index.html with the inputs, buttons and the list. Then I wrote script.js part by part: first the object and the calculations, then the button event for the form, and at the end the add/remove buttons for the list. I tested every part in the browser and checked the console for errors. The hardest part for me was understanding why the value from the input is a string and needs Number(). Also I learned how to create and remove elements with JS. In the end I uploaded the project to GitHub and published it with GitHub Pages.
  
