@@ -47,9 +47,9 @@ I added a click event listener to the button. When I click it, the code reads th
  
 ### Task 5. Creating & Removing Elements
  
-Create an unordered list (<ul>) with tasks or hobbies. Create an "Add Item" button that adds a new <li> from user input, and a "Remove Item" button that deletes the last item.
+Create an unordered list (ul) with tasks or hobbies. Create an "Add Item" button that adds a new (li) from user input, and a "Remove Item" button that deletes the last item.
  
-I made a <ul> with three hobbies. For the "Add Item" button I take the text from the input, create a new <li> with document.createElement, put the text inside and add it to the list with appendChild. If the input is empty, nothing is added. For the "Remove Item" button I find the last <li> with lastElementChild and delete it with remove().
+I made a (ul) with three hobbies. For the "Add Item" button I take the text from the input, create a new (li) with document.createElement, put the text inside and add it to the list with appendChild. If the input is empty, nothing is added. For the "Remove Item" button I find the last (li) with lastElementChild and delete it with remove().
 
 ![Task 5 - add](screenaido/task5_add.png)
  
