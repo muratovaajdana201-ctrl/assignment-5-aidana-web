@@ -19,10 +19,10 @@ Create a JavaScript const object named userProfile that stores different data ty
 I made the userProfile object with const. It has name (string), birthYear (number), isDeveloper (boolean) and hobbies (array with three hobbies).
 
 const userProfile = {
-  name: "Your Name",
-  birthYear: 2006,
+  name: "Aidana",
+  birthYear: 2007,
   isDeveloper: true,
-  hobbies: ["Reading", "Music", "Football"]
+  hobbies: ["Horse riding", "Archery", "Volleyball"]
 };
  
 
@@ -48,7 +48,6 @@ function showProfile() {
   document.getElementById("profileInfo").textContent =
     userProfile.name + ", age: " + age + ", months: " + months + ", hobbies: " + hobbiesCount;
 }
-
 showProfile();
 
 ![Task 2](screenaido/task2.png)
