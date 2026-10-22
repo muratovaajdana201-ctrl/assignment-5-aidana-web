@@ -1,8 +1,9 @@
 
-# Assignment 5. JavaScript Basics (DOM Manipulation & Events)
+# Assignment 5. JavaScript Basics 
  
 Name: AIDANA MURATOVA SE-2539 
-GitHub Pages link:
+
+GitHub Pages link:https://github.com/muratovaajdana201-ctrl/assignment-5-aidana-web
  
 
 ## Part 1: Profile Object, Data Types & Arithmetic
